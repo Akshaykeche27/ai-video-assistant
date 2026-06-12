@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/chat.css') }}">
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+    <h2>Chat With Video</h2>
+
+    <div id="chat"></div>
+
+    <div class="input-box">
+        <input type="text" id="q" placeholder="Ask a question">
+        <button onclick="ask()">Send</button>
+    </div>
+
+</div>
+
+<script>
+    const videoId = "{{ video_id }}";
+</script>
+
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+
+{% endblock %}

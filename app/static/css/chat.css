@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0f19;
+    color: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    background: #111827;
+}
+
+#chat {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.msg {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    word-wrap: break-word;
+}
+
+.user {
+    align-self: flex-start;
+    background: #2563eb;
+}
+
+.bot {
+    align-self: flex-end;
+    background: #1f2937;
+}
+
+.input-box {
+    display: flex;
+    padding: 10px;
+    background: #111827;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: #1f2937;
+    color: white;
+}
+
+button {
+    margin-left: 10px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #22c55e;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* loader animation */
+.dots span {
+    animation: blink 1.4s infinite both;
+}
+
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    100% { opacity: 0.2; }
+}

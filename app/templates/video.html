@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Analyze Video
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/feature.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="feature-page">
+
+    <div class="feature-header">
+        <h1>AI Video Assistant</h1>
+
+        <p>
+            Paste a YouTube URL and generate transcript,
+            summary and insights using AI.
+        </p>
+    </div>
+
+    <div id="videoForm" class="feature-card">
+
+        <h2>Video URL Analysis</h2>
+
+        <form method="POST"
+              action="{{ url_for('video.video') }}"
+              class="feature-form">
+
+            <input type="url"
+                   name="video_url"
+                   placeholder="Enter Video URL"
+                   required>
+
+            <button type="submit">
+                Analyze Video
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

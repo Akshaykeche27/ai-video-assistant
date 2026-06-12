@@ -1,0 +1,166 @@
+.header{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 7%;
+    background:rgba(11,17,32,0.95);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#60a5fa;
+}
+
+.nav-container{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+nav a{
+    color:#e2e8f0;
+    text-decoration:none;
+    font-size:15px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#60a5fa;
+}
+
+.nav-buttons{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.signin-btn,
+.register-btn,
+.logout-btn{
+    padding:12px 22px;
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.signin-btn{
+    background:#1e293b;
+}
+
+.register-btn{
+    background:linear-gradient(
+        to right,
+        #2563eb,
+        #06b6d4
+    );
+}
+.logout-btn{
+     background:linear-gradient(
+        to right,
+        #724015,
+        #1a1c1c 
+        )
+}
+
+.register-btn:hover,
+.signin-btn:hover,.logout-btn{
+    transform:translateY(-3px);
+}
+
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:28px;
+    height:3px;
+    background:white;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-container{
+        position:absolute;
+        top:90px;
+        left:0;
+        width:100%;
+        background:#0b1120;
+        border-top:1px solid rgba(255,255,255,0.08);
+        padding:30px;
+        display:none;
+        flex-direction:column;
+        align-items:center;
+        gap:30px;
+    }
+
+    .nav-container.active{
+        display:flex;
+    }
+
+    nav{
+        flex-direction:column;
+        width:100%;
+        text-align:center;
+    }
+
+    .nav-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .signin-btn,
+    .register-btn,
+    .logout-btn{
+        width:100%;
+        text-align:center;
+    }
+}
+
+.thinking-message{
+    opacity:0.8;
+    font-style:italic;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        opacity:0.3;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0.3;
+    }
+
+}

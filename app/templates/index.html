@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+AI Vision
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet"
+href="{{ url_for('static',
+filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="tag">
+            🚀 Smart AI Video Assistant
+        </div>
+
+        <h1>
+            Analyze Videos With
+            <span>AI Intelligence</span>
+        </h1>
+
+        <p>
+            Upload videos and generate summaries,
+            chatbot interaction, transcripts,
+            smart AI analysis and much more.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/register" class="primary-btn">
+                Start Now
+            </a>
+
+            <a href="/video" class="secondary-btn">
+                Explore Features
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}

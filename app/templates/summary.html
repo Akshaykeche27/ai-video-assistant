@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block title %}Video Summary{% endblock %}
+{% block content %}
+<style>
+    body {
+        background: #0f172a;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .summary-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+    .summary-card {
+        background: #111827;
+        border-radius: 22px;
+        padding: 35px;
+        box-shadow: 0px 0px 30px rgba(0,0,0,0.45);
+        border: 1px solid rgba(255,255,255,0.08);
+    }
+    .summary-title {
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+    .summary-subtitle {
+        color: #94a3b8;
+        margin-bottom: 28px;
+        font-size: 14px;
+    }
+    .summary-body {
+        color: #f1f5f9;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    /* Headings inside summary */
+    .summary-body h1 {
+        color: #38bdf8;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 28px 0 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(56,189,248,0.2);
+    }
+    .summary-body h2 {
+        color: #38bdf8;
+        font-size: 17px;
+        font-weight: bold;
+        margin: 22px 0 8px;
+    }
+    .summary-body h3 {
+        color: #7dd3fc;
+        font-size: 15px;
+        font-weight: bold;
+        margin: 16px 0 6px;
+    }
+
+    /* Bullet points */
+    .point {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 10px;
+        background: #1e293b;
+        border-radius: 10px;
+        padding: 10px 14px;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    .point-symbol {
+        color: #38bdf8;
+        font-size: 16px;
+        margin-top: 2px;
+        flex-shrink: 0;
+    }
+    .point-text {
+        flex: 1;
+        color: #e2e8f0;
+    }
+
+    /* Plain paragraph text */
+    .plain-line {
+        margin-bottom: 8px;
+        color: #cbd5e1;
+        padding: 0 4px;
+    }
+
+    /* Buttons */
+    .btn-group {
+        margin-top: 28px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .action-btn {
+        text-decoration: none;
+        padding: 11px 22px;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 14px;
+        transition: 0.25s ease;
+        display: inline-block;
+    }
+    .back-btn {
+        background: #38bdf8;
+        color: #0f172a;
+    }
+    .back-btn:hover {
+        background: #0ea5e9;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+        .summary-title { font-size: 22px; }
+        .summary-card { padding: 20px; }
+        .summary-body { font-size: 14px; }
+    }
+</style>
+
+<div class="summary-container">
+    <div class="summary-card">
+        <h1 class="summary-title">✨ AI Video Summary</h1>
+        <p class="summary-subtitle">Professional AI-generated insights from your video</p>
+
+        <div class="summary-body">
+            {% for line in summary.split('\n') %}
+                {% set stripped = line.strip() %}
+
+                {% if not stripped %}
+                    {# Skip blank lines silently #}
+
+                {% elif stripped.startswith('### ') %}
+                    <h3>{{ stripped[4:] }}</h3>
+
+                {% elif stripped.startswith('## ') %}
+                    <h2>{{ stripped[3:] }}</h2>
+
+                {% elif stripped.startswith('# ') %}
+                    <h1>{{ stripped[2:] }}</h1>
+
+                {% elif stripped.startswith('- ') or stripped.startswith('* ') %}
+                    <div class="point">
+                        <div class="point-symbol">✦</div>
+                        <div class="point-text">{{ stripped[2:] }}</div>
+                    </div>
+
+                {% elif stripped.startswith('• ') %}
+                    <div class="point">
+                        <div class="point-symbol">✦</div>
+                        <div class="point-text">{{ stripped[2:] }}</div>
+                    </div>
+
+                {% else %}
+                    <p class="plain-line">{{ stripped }}</p>
+
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="btn-group">
+            <a href="/video" class="action-btn back-btn">← Analyze Another Video</a>
+        </div>
+    </div>
+</div>
+
+<a href="/chat-page?video_id={{video_id}}">
+    <button>Chat with Video</button>
+</a>
+{% endblock %}

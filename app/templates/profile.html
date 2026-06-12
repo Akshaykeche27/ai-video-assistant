@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+
+{% block extra_css %}
+<link rel="stylesheet"
+href="{{ url_for('static',
+filename='css/profile.css') }}">
+{% endblock %}
+{% block content %}
+
+<section class="profile-page">
+
+    <div class="profile-container">
+
+        <aside class="profile-sidebar">
+
+            <div class="profile-avatar">
+                <i class="ti ti-user"></i>
+            </div>
+
+            <h2>{{current_user.username}}</h2>
+
+            <p class="role">{{current_user.profession}}</p>
+
+            <div class="profile-info">
+
+                <div class="info-box">
+                    <span>Email</span>
+                    <p>{{current_user.email}}</p>
+                </div>
+
+                <div class="info-box">
+                    <span>Age</span>
+                    <p>{{current_user.age}} -Year Old</p>
+                </div>
+
+                <div class="info-box">
+                    <span>Member Since</span>
+                    <p>{{current_user.created_at.date()}}</p>
+                </div>
+
+            </div>
+
+            <a href="#" class="profile-btn">
+                Edit Profile
+            </a>
+
+        </aside>
+
+        <main class="profile-content">
+
+            <div class="hero-card">
+
+                <h1>Welcome Back 👋 {{current_user.username}}</h1>
+
+                <p>
+                    Manage your account, monitor activity and
+                    access all platform features from your dashboard.
+                </p>
+
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <h3>12</h3>
+                    <span>Projects</span>
+                </div>
+
+                <div class="stat-card">
+                    <h3>85%</h3>
+                    <span>Profile Score</span>
+                </div>
+
+                <div class="stat-card">
+                    <h3>248</h3>
+                    <span>Activities</span>
+                </div>
+
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <i class="ti ti-video"></i>
+                    <h3>Videos</h3>
+                    <p>Access uploaded video history.</p>
+                </div>
+
+               <a href="/history" class="feature-link">
+                 <div class="feature-card">
+                     <i class="ti ti-history"></i>
+                 <h3>History</h3>
+                 <p>View your history</p>
+                    </div>
+                </a>
+
+                <div class="feature-card">
+                    <i class="ti ti-settings"></i>
+                    <h3>Settings</h3>
+                    <p>Manage account preferences.</p>
+                </div>
+
+                <a href="/logout" class="feature-link">
+              <div class="feature-card">
+                <i class="ti ti-logout"></i>
+                <h3>Logout</h3>
+                  <p>Securely sign out.</p>
+                 </div>
+                </a>
+            </div>
+
+        </main>
+
+    </div>
+
+</section>
+
+{% endblock %}

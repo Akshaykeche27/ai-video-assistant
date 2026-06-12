@@ -1,0 +1,366 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html,
+body{
+    height:100%;
+}
+
+body{
+    background:#050816;
+    color:white;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.main-content{
+    flex:1;
+}
+
+/* HEADER */
+
+.header{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 7%;
+    background:rgba(11,17,32,0.95);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#60a5fa;
+}
+
+.nav-container{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+nav a{
+    color:#e2e8f0;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#60a5fa;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:12px;
+}
+
+.signin-btn,
+.register-btn,
+.logout-btn{
+    padding:12px 20px;
+    border-radius:12px;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    transition:.3s;
+}
+
+.signin-btn{
+   background-color: transparent;
+   color: #60a5fa;
+border: 2px solid rgb(27, 47, 63);
+}
+
+.register-btn{
+      color: #60a5fa;
+border: 2px solid rgb(27, 47, 63);
+
+}
+
+.logout-btn{
+   background-color: transparent;
+   border: 2px solid rgb(56, 12, 12);
+   color: #d82727;
+}
+
+.signin-btn:hover,
+.register-btn:hover,
+.logout-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* MOBILE MENU */
+
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:28px;
+    height:3px;
+    background:white;
+    border-radius:10px;
+}
+
+/* PAGE */
+
+.hero{
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#94a3b8;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:auto;
+    padding:16px 7%;
+    background:#0b1120;
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footer-content{
+    text-align:center;
+}
+
+.footer-content p{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .nav-container{
+        position:absolute;
+        top:80px;
+        left:0;
+        width:100%;
+        background:#0b1120;
+        padding:25px;
+        display:none;
+        flex-direction:column;
+        gap:25px;
+        border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-container.active{
+        display:flex;
+    }
+
+    nav{
+        width:100%;
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .nav-buttons{
+        width:100%;
+        flex-direction:column;
+    }
+
+    .signin-btn,
+    .register-btn,
+    .logout-btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+}
+
+.flash-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.flash-message {
+    width: 320px;
+    min-height: 65px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 18px;
+
+    color: #fff;
+
+    border-radius: 18px;
+
+    background: rgba(15, 23, 42, 0.65);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+
+    animation: slideIn .4s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.flash-message::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 5px;
+    height: 100%;
+}
+
+.flash-message.success::before {
+    background: linear-gradient(
+        to bottom,
+        #00ff99,
+        #00c853
+    );
+}
+
+.flash-message.error::before {
+    background: linear-gradient(
+        to bottom,
+        #ff4d6d,
+        #ff1744
+    );
+}
+
+.flash-message.warning::before {
+    background: linear-gradient(
+        to bottom,
+        #ffcc00,
+        #ff9800
+    );
+}
+
+.flash-message i {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.flash-message.success i {
+    color: #00ff99;
+}
+
+.flash-message.error i {
+    color: #ff4d6d;
+}
+
+.flash-message.warning i {
+    color: #ffcc00;
+}
+
+.flash-message > div {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 8px;
+}
+
+.flash-close {
+    background: rgba(255,255,255,0.08);
+    border: none;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    color: white;
+    cursor: pointer;
+
+    transition: all .3s ease;
+}
+
+.flash-close:hover {
+    background: rgba(255,255,255,0.18);
+    transform: rotate(90deg);
+}
+
+.flash-hide {
+    animation: slideOut .4s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+}
+
+
+.flash-message.success {
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.35),
+        0 0 20px rgba(0,255,153,.15);
+}
+
+.flash-message.error {
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.35),
+        0 0 20px rgba(255,77,109,.15);
+}

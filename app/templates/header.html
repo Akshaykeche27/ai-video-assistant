@@ -1,0 +1,70 @@
+<header class="header">
+
+    <div class="logo">
+        AI Vision
+    </div>
+
+    <div class="menu-toggle"
+         onclick="toggleMenu()">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <div class="nav-container"
+         id="navContainer">
+
+        <nav>
+
+            <a href="/">Home</a>
+
+            <a href="/video">
+                Features
+            </a>
+
+            <a href="/profile">
+                Profile
+            </a>
+
+            <a href="/history">
+                History
+            </a>
+          
+        </nav>
+
+        <div class="nav-buttons">
+
+            {% if current_user %}
+
+                <a href="/logout"
+                   class="logout-btn">
+
+                    Logout
+
+                </a>
+
+            {% else %}
+
+                <a href="/login"
+                   class="signin-btn">
+
+                    Sign In
+
+                </a>
+
+                <a href="/register"
+                   class="register-btn">
+
+                    Register
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</header>

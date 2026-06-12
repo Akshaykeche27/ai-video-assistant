@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/history.css') }}"><button id="mobileMenuBtn" class="mobile-menu-btn">
+    ☰
+</button><div id="overlay" class="overlay"></div><div class="history-container"><aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+
+        <h2 class="sidebar-title">
+            History
+        </h2>
+
+        <button id="toggleBtn" class="toggle-btn">
+            ☰
+        </button>
+
+        <button id="closeSidebarBtn" class="close-sidebar-btn">
+            ✕
+        </button>
+
+    </div>
+
+     <div class="history-list">
+
+        {% for transcript in transcripts %}
+
+        <div class="history-card">
+
+            <h4>{{ transcript.title }}</h4>
+          <div class="transcript" >
+           <small> {{ transcript.transcript|safe }}</small>
+          </div>
+
+            <button
+                class="view-btn"
+                data-transcript="{{ transcript.transcript_uuid }}"
+                data-video="{{ transcript.video_id }}"
+            >
+                View
+            </button>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</aside>
+
+<main class="chat-section">
+
+    <div id="chatBox" class="chat-box">
+
+        <div class="welcome-message">
+            Select a transcript to start chatting.
+        </div>
+
+    </div>
+
+    <div class="chat-input-container">
+
+        <input
+            type="text"
+            id="questionInput"
+            placeholder="Ask about this transcript..."
+        >
+
+        <button id="sendBtn">
+            Send
+        </button>
+
+    </div>
+
+</main>
+
+</div>{% endblock %}
+
+{% block extra_js %}
+
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>{% endblock %}
