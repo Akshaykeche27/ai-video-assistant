@@ -1,10 +1,7 @@
-from app import create_app,os
+import os
+from app import create_app
 
-app=create_app()
- 
-# with app.app_context():  #temparoryly active flask app flask related thing can work
-#     db.create_all()
-
+app = create_app()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
